@@ -1,11 +1,83 @@
+@import 'variables.scss';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html{
+html {
     scroll-behavior: smooth;
 }
 body {
     font-family: poppins;
+}
+
+// ===================== Navigation bar ====================
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    box-shadow: 0.2px 0.2px 0.2px 0.2px;
+}
+.navbar_logo img {
+    width: 130px;
+    margin-left: 20px;
+}
+.navbar_mobile_icon {
+    display: none;
+}
+.navbar_lists {
+    display: flex;
+    list-style: none;
+    margin-right: 20px;
+}
+.navbar_lists .navbar_item {
+    padding: 20px;
+}
+.navbar_lists .navbar_item .navbar_link {
+    text-decoration: none;
+    color: $dark-color;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.navbar_lists .navbar_item .navbar_link:hover {
+    color: $primary-color;
+}
+.navbar_lists .navbar_item .navbar_link.active {
+    color: $primary-color;;
+}
+
+@media screen and (max-width: 768px){
+    .navbar_lists{
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        display: block;
+        text-align: center;
+        width: 80%;
+        height: 100vh;
+        background: $primary-color;
+        transition: .5s;
+        z-index: 999;
+        border-top: 1px solid rgba(0,0,0,0.2);
+    }
+    .navbar_lists.show {
+        left: 0;
+    }
+    .navbar_mobile_icon {
+        display: block;
+        cursor: pointer;
+        font-size: 1.6rem;
+    }
+    .navbar_lists .navbar_item .navbar_link:hover {
+        color: #fff;
+    }
+    .navbar_lists .navbar_item .navbar_link.active {
+        color: #fff;
+    }
 }
