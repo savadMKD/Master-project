@@ -15,6 +15,7 @@ body {
 // ===================== Navigation bar ====================
 .navbar {
     position: fixed;
+    background: #fff;
     width: 100%;
     height: 90px;
     display: flex;
@@ -22,6 +23,7 @@ body {
     padding: 20px;
     align-items: center;
     box-shadow: 0.2px 0.2px 0.2px 0.2px;
+    z-index: 1000;
 }
 .navbar_logo img {
     width: 130px;
@@ -79,5 +81,46 @@ body {
     }
     .navbar_lists .navbar_item .navbar_link.active {
         color: #fff;
+    }
+}
+
+// Banner Section
+.banner {
+    padding: 100px;
+}
+.banner_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner_img img {
+    margin-top: 50px;
+    width: 500px;
+}
+.banner_text h4 {
+    font-size: 30px;
+    font-weight: 500;
+}
+.banner_text p {
+    margin-top: 10px;
+    font-size: 17px;
+    color: #000;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+.banner_text a {
+    text-decoration: none;
+    background: $primary-color;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: all 0.3s;
+    &:hover {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 22px;
+        padding-right: 22px;
     }
 }
