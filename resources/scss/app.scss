@@ -84,7 +84,7 @@ body {
     }
 }
 
-// Banner Section
+// ==================== Banner Section ===============
 .banner {
     padding: 100px;
 }
@@ -122,5 +122,49 @@ body {
         padding-bottom: 10px;
         padding-left: 22px;
         padding-right: 22px;
+    }
+}
+
+// ========================= Services Section =====================
+.services {
+    width: 100%;
+    position: relative;
+}
+
+.services_container {
+    display: flex;
+    padding: 80px;
+}
+.services_content {
+    cursor: pointer;
+    background: $primary-color;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+.services_content i {
+    font-size: 50px;
+    font-weight: 300;
+}
+.services_content h3 {
+    font-weight: 400;
+    margin: 10px;
+} 
+
+@media screen and (max-width: 768px){
+    .banner_container {
+        display: flex;
+        flex-direction: column;
+    }
+    .banner_img img {
+        margin-bottom: 50px;
+    }
+    .banner_text {
+        text-align: center;
+    }
+    // ======== Services ========
+    .services_container {
+        flex-direction: column;
     }
 }

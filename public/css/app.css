@@ -140,3 +140,51 @@ body {
   padding-right: 22px;
 }
 
+.services {
+  width: 100%;
+  position: relative;
+}
+
+.services_container {
+  display: flex;
+  padding: 80px;
+}
+
+.services_content {
+  cursor: pointer;
+  background: #5b65f5;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.services_content i {
+  font-size: 50px;
+  font-weight: 300;
+}
+
+.services_content h3 {
+  font-weight: 400;
+  margin: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .banner_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner_img img {
+    margin-bottom: 50px;
+  }
+
+  .banner_text {
+    text-align: center;
+  }
+
+  .services_container {
+    flex-direction: column;
+  }
+}
+
