@@ -9,8 +9,26 @@
         <li class="navbar_item"><a href="/" class="navbar_link active">Home</a></li>
         <li class="navbar_item"><a href="/products" class="navbar_link">Products</a></li>
         <li class="navbar_item"><a href="#" class="navbar_link">Cart</a></li>
+        {{#if user}}
         <li class="navbar_item"><a href="#" class="navbar_link">Orders</a></li>
-        <li class="navbar_item"><a href="#" class="navbar_link">Contact Us</a></li>
+        {{/if}}
+        <li class="navbar_item">
+            <div class="dropdown">
+                {{#if user}}
+                <a href="#" class="dropbtn">{{user.Username}}</a>
+                {{else}}
+                <a href="#" class="dropbtn">Account</a>
+                {{/if}}
+                <div class="dropdown-content">
+                    {{#if user}}
+                    <a href="/logout">Log out</a>
+                    {{else}}
+                    <a href="/login">Login</a>
+                    <a href="/signup">Sign up</a>
+                    {{/if}}
+                </div>
+            </div>
+        </li>
     </ul>
 </header>
 
@@ -28,7 +46,7 @@
     }
 
     showMenu('header-toggle', 'navbar_list')
-    
+
     // Active and remove menu
     const navlink = document.querySelectorAll('.navbar_link')
 

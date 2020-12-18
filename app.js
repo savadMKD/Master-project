@@ -10,6 +10,7 @@ var hbs = require("express-handlebars");
 
 var app = express();
 var db = require("./config/connection");
+var session = require("express-session");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +22,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// ========== Creating Sessions and cookie =================
+app.use(session({secret: 'Royal Furniture', resave: false, saveUninitialized: true, cookie: {maxAge: 600000 }}));
 
 // =========== Database Connection ==============
 db.connect((err) => {
