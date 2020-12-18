@@ -423,3 +423,74 @@ footer {
     margin: 5px 0;
   }
 }
+// ======================= Signup Page =====================
+.signup {
+  background: radial-gradient(#a429bc, #9225a7, #7f2092);
+  height: 100vh;
+  overflow: hidden;
+  padding: 100px;
+  padding-bottom: 140px;
+}
+.signup .signup_center {
+  width: 430px;
+  margin: 130px auto;
+  position: relative;
+}
+.signup .signup_center .signup_header {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  padding: 25px 0 30px 25px;
+  background: #5c1769;
+  border-bottom: 1px solid #370e3f;
+  border-radius: 5px 5px 0 0;
+}
+.signup_center form {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  padding: 50px 10px 0 30px;
+  box-sizing: border-box;
+  border: 1px solid #6d1c7d;
+  border-radius: 0 0 5px 5px;
+}
+.signup_center form i {
+  position: absolute;
+  font-size: 25px;
+  color: gray;
+  margin: 15px 0 0 -45px;
+}
+.signup_center form i.bx-lock,
+.signup_center form i.bx-envelope {
+  margin-top: 35px;
+}
+.signup_center form input {
+  height: 50px;
+  width: 90%;
+  padding: 0 10px;
+  border-radius: 3px;
+  border: 1px solid silver;
+  font-size: 18px;
+  outline: none;
+}
+.signup_center form input[ type="email" ]{
+  margin-top: 20px;
+}
+.signup_center form input[ type="password" ]{
+  margin-top: 20px;
+}
+.signup_center form button {
+  margin-top: 40px;
+  height: 45px;
+  width: 130px;
+  padding: 0 10px;
+  border-radius: 45px;
+  border-radius: 5px;
+  border: 1px solid silver;
+  font-size: 18px;
+  outline: none;
+  margin-bottom: 40px;
+  color: white;
+  line-height: 45px;
+  background: $primary-color;
+}
