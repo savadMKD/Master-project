@@ -14,10 +14,13 @@
 </head>
 
 <body>
+  {{#if admin_page}}
+  {{> admin-header}}
+  {{else}}
   {{> user-header}}
+  {{/if}}
   {{{body}}}
   {{> footer}}
   <script src="/js/app.js"></script>
 </body>
-
 </html>
