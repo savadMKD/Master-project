@@ -1,0 +1,58 @@
+{{!-- ============ Admin Navigation Bar ==================== --}}
+<header class="navbar">
+    <div class="navbar_logo">
+        <a href="/"><img src="/images/logo.png" alt="logo"></a>
+    </div>
+    <div class="navbar_mobile_icon">
+        <i class="bx bx-menu" id="header-toggle"></i>
+    </div>
+    <ul class="navbar_lists" id="navbar_list">
+        <li class="navbar_item"><a href="/admin" class="navbar_link active">Home</a></li>
+        <li class="navbar_item"><a href="/admin" class="navbar_link">All Products</a></li>
+        <li class="navbar_item"><a href="/admin" class="navbar_link">All Users</a></li>
+        <li class="navbar_item"><a href="/admin" class="navbar_link">All Admins</a></li>
+        <li class="navbar_item">
+            <div class="dropdown">
+                {{#if admin}}
+                <a href="#" class="dropbtn">{{admin.Username}}</a>
+                {{else}}
+                <a href="#" class="dropbtn">Account</a>
+                {{/if}}
+                <div class="dropdown-content">
+                    {{#if admin}}
+                    <a href="/login">Create Admin</a>
+                    <a href="/admin/logout">Log out</a>
+                    {{else}}
+                    <a href="/admin/login">login</a>
+                    {{/if}}
+                </div>
+            </div>
+        </li>
+    </ul>
+</header>
+
+<script>
+    const showMenu = (toggleId, navId) => {
+        const toggle = document.getElementById(toggleId),
+            nav = document.getElementById(navId)
+
+        if (toggle && nav) {
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('show')
+                toggle.classList.toggle('bx-x')
+            })
+        }
+    }
+
+    showMenu('header-toggle', 'navbar_list')
+
+    // Active and remove menu
+    const navlink = document.querySelectorAll('.navbar_link')
+
+    function linkAction() {
+        navlink.forEach(n => n.classList.remove('active'))
+        this.classList.add('active')
+    }
+
+    navlink.forEach(n => n.addEventListener('click', linkAction))
+</script>

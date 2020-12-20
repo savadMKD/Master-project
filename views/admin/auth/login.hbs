@@ -1,14 +1,16 @@
 {{!-- ============= Login Page ================ --}}
 <div class="signup">
     <div class="signup_center">
-        <div class="signup_header">Login Form</div>
-        <form action="/login" method="POST">
+        <div class="signup_header">Admin Login Form</div>
+        <form action="/admin/login" method="POST">
             <input type="email" name="Email" id="Email" placeholder="Enter Email Address">
             <i class='bx bx-envelope'></i>
             <input type="password" name="Password" id="Password" placeholder="Enter Password">
             <i class='bx bx-lock' onclick="show()" ></i>
-            {{#if userloginErr}}
-            <p class="error">{{userloginErr}}</p>
+            <br>
+            <br>
+            {{#if adminloginErr}}
+            <p style="color: red;" class="error">{{adminloginErr}}</p>
             {{/if}}
             <button type="submit">Register</button>
         </form>

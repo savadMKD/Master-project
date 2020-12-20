@@ -28,7 +28,7 @@ app.use(session({secret: 'Royal Furniture', resave: false, saveUninitialized: tr
 
 // =========== Database Connection ==============
 db.connect((err) => {
-  if(err) console.log("Something happened to mongodb " + err);
+  if(err) console.log("Something happened to database " + err);
   else console.log("Database Connected Successfully");
 });
 

@@ -37,5 +37,31 @@ module.exports = {
                 resolve({ status: false });
             }
         });
+    },
+
+    // =================== Admin Login ==========================
+    adminLogin: (adminData) => {
+        return new Promise( async (resolve, reject) => {
+            let admin_login_status = false;
+            let admin_response = {  };
+            let admin = await db.get().collection(collection.ADMIN_COLLECTION).findOne({ Email: adminData.Email });
+
+            // ============== Checking admin exising in database =================
+            if(admin){
+                bcrypt.compare(adminData.Password, admin.Password).then((status) => {
+                    if(status){
+                        admin_response.admin = admin;
+                        admin_response.status = true;
+                        resolve(admin_response);
+                    }
+                    else {
+                        resolve({ status: false });
+                    }
+                });
+            }
+            else{
+                resolve({ status: false });
+            };
+        });
     }
 };
