@@ -57,5 +57,17 @@ router.post('/createAdmin', (req, res) => {
     res.redirect("/admin");
   });
 });
+// ============= Rendering Products Page =====================
+router.get('/products', (req, res) => {
+  res.render('admin/products/products')
+});
+// ============ Rendering add products page ========================
+router.get('/add-product', (req, res) => {
+  res.render('admin/products/add-product')
+});
+router.post('/add-product', (req, res) => {
+  console.log(req.body);
+  console.log(req.files.Image);
+});
 
 module.exports = router;

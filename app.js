@@ -11,6 +11,7 @@ var hbs = require("express-handlebars");
 var app = express();
 var db = require("./config/connection");
 var session = require("express-session");
+var fileUpload = require("express-fileupload");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +32,9 @@ db.connect((err) => {
   if(err) console.log("Something happened to database " + err);
   else console.log("Database Connected Successfully");
 });
+
+// ============= Express FileUpload ===================
+app.use(fileUpload())
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
