@@ -1,0 +1,31 @@
+{{!-- ============= Signup Page ================ --}}
+<div class="signup">
+    <div class="signup_center">
+        <div class="signup_header">Create Admin Form</div>
+        <form action="/admin/createAdmin" method="POST">
+            <input type="text" name="Username" id="Username" placeholder="Enter Username">
+            <i class='bx bxs-user-account' ></i>
+            <input type="email" name="Email" id="Email" placeholder="Enter Email Address">
+            <i class='bx bx-envelope'></i>
+            <input type="password" name="Password" id="Password" placeholder="Enter Password">
+            <i class='bx bx-lock' onclick="show()" ></i>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function show() {
+        var password = document.getElementById("Password");
+        var icon = document.querySelector(".bx-");
+
+        if(password.type === "password"){
+            password.type = "text";
+            password.style.marginTop = "20px";
+            icon.style.color = "#5b65f5";
+        }else{
+            password.type = "password";
+            icon.style.color = "grey";
+        };
+    };
+</script>

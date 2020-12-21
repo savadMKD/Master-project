@@ -39,10 +39,23 @@ router.post('/login', (req, res) => {
     }
   });
 });
+// ==================== Logout Functianality ==============
 router.get('/logout', (req, res) => {
   req.session.admin = null;
   req.session.adminLoggedIn = false;
   res.redirect("/admin/login");
+});
+// ============= Rendering Create admin Page ==========
+router.get('/createAdmin', verifyLogin, (req, res) => {
+  res.render('admin/auth/createAdmin')
+});
+// ============== Creating Admin Page on the server ==================
+router.post('/createAdmin', (req, res) => {
+  authcontroller.admin_sigup(req.body).then((response) => {
+    req.session.admin = response;
+    req.session.adminLoggedIn = true;
+    res.redirect("/admin");
+  });
 });
 
 module.exports = router;
