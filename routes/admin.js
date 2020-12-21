@@ -12,7 +12,7 @@ const verifyLogin = (req, res, next) => {
 };
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', verifyLogin, function(req, res, next) {
   let admin = req.session.admin;
   res.render('user/index', { admin_page: true, admin });
 });
