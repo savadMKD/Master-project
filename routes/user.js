@@ -1,5 +1,6 @@
 var express = require('express');
 const authController = require('../controller/authcontroller');
+const productController = require('../controller/productController');
 var router = express.Router();
 
 // ============= Checking user is logged in or not ==================
@@ -18,8 +19,10 @@ router.get('/', function(req, res, next) {
 });
 // Render products page
 router.get('/products', (req, res) => {
-  let user = req.session.user;
-  res.render('user/products/products', { user });
+  productController.getAllProducts().then((Products) => {
+    let user = req.session.user;
+    res.render('user/products/products', { user, Products });
+  });
 });
 // Render Login and Signup Pages
 router.get('/signup', (req, res) => {
