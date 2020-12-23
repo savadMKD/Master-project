@@ -1,5 +1,7 @@
 const counters = document.querySelectorAll(".counter");
 
+// ============== Counter Up Animation ===================
+
 counters.forEach((counter) => {
   counter.innerText = "0";
 

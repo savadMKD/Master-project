@@ -93,5 +93,21 @@ router.get('/delete_product/:id', (req, res) => {
     res.redirect('/admin/products');
   });
 });
+// ======= Rendering Edit Product Page and sending Values ========
+router.get('/edit_product/:id', verifyLogin, async (req, res) => {
+  let Product = await productController.getProductDetails(req.params.id);
+  res.render('admin/products/edit-product', { admin_page: true, Product });
+});
+// ============ Updating Product Values and sending to the server ===============
+router.post('/edit_product/:id', (req, res) => {
+  let product_id = req.params.id;
+  productController.updateProduct(product_id, req.body).then(() => {
+    res.redirect('/admin/products');
+    if(req.files.Image){
+      let Image = req.files.Image;
+      Image.mv("./public/product_images/" + product_id + ".png");
+    };
+  });
+});
 
 module.exports = router;
