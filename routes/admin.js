@@ -15,7 +15,7 @@ const verifyLogin = (req, res, next) => {
 /* GET users listing. */
 router.get("/", verifyLogin, function(req, res, next) {
   let admin = req.session.admin;
-  res.render("user/index", { admin_page: true, admin });
+  res.render("admin/index", { admin_page: true, admin });
 });
 // Rendering Admin_Login Page
 router.get("/login", (req, res) => {
