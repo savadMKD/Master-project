@@ -93,7 +93,8 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var counters = document.querySelectorAll(".counter");
+var counters = document.querySelectorAll(".counter"); // ============== Counter Up Animation ===================
+
 counters.forEach(function (counter) {
   counter.innerText = "0";
 

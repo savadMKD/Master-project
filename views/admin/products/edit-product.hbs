@@ -1,0 +1,129 @@
+<div class="l-form">
+    <form action="/admin/edit_product/{{Product._id}}" method="POST" enctype="multipart/form-data" class="form">
+        <h1 class="form__title">Edit Product Form</h1>
+
+        <div class="form__div">
+            <input type="text" name="Name" class="form__input" value="{{Product.Name}}">
+            <label for="" class="form__label">Name of the Product</label>
+        </div>
+
+        <div class="form__div">
+            <input type="number" name="Price" class="form__input" value="{{Product.Price}}">
+            <label for="" class="form__label">Price of the Product</label>
+        </div>
+
+        <div class="form__div">
+            <img style="width: 100px;" src="/product_images/{{Product._id}}.png" id="product_view"
+                alt="{{Product.Name}}">
+        </div>
+        <br>
+        <div class="form__div">
+            <input type="file" name="Image" class="form__input" onchange="view_product(event)">
+            <label for="" class="form__label">Images of the Product</label>
+        </div>
+
+        <button type="submit" class="form__button">Add Product<button />
+    </form>
+</div>
+
+<style>
+    .l-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form {
+        width: 360px;
+        padding: 4rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+    }
+
+    .form__title {
+        font-weight: 400;
+        margin-bottom: 3rem;
+    }
+
+    .form__div {
+        position: relative;
+        height: 48px;
+        margin-bottom: 1.5rem;
+    }
+
+    .form__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        border: 1px solid #DADCE0;
+        border-radius: .5rem;
+        outline: none;
+        padding: 1rem;
+        background: none;
+        z-index: 1;
+    }
+
+    .form__label {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        padding: 0 .25rem;
+        background-color: #fff;
+        color: #80868B;
+        font-size: 1rem;
+        transition: .3s;
+    }
+
+    .form__button {
+        display: block;
+        margin-left: auto;
+        padding: .75rem 2rem;
+        outline: none;
+        border: none;
+        background-color: #1A73E8;
+        color: #fff;
+        font-size: 1rem;
+        border-radius: .5rem;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .form__button:hover {
+        box-shadow: 0 10px 36px rgba(0, 0, 0, .15);
+    }
+
+    /*Input focus move up label*/
+    .form__input:focus+.form__label {
+        top: -.5rem;
+        left: .8rem;
+        color: #1A73E8;
+        font-size: .75rem;
+        font-weight: 500;
+        z-index: 10;
+    }
+
+    /*Input focus sticky top label*/
+    .form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
+        top: -.5rem;
+        left: .8rem;
+        font-size: .75rem;
+        font-weight: 500;
+        z-index: 10;
+    }
+
+    /*Input focus*/
+    .form__input:focus {
+        border: 1.5px solid #1A73E8;
+    }
+</style>
+
+
+<script>
+    function view_product(event) {
+        document.getElementById('product_view').src = URL.createObjectURL(event.target.files[0])
+    };
+</script>
