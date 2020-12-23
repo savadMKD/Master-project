@@ -1,0 +1,60 @@
+<div class="hero_admin">
+    <div class="admin_counter_box">
+        <i class='bx bxs-user-detail'></i>
+        <div class="counter" data-target="3000"></div>
+        <span>Total Users</span>
+    </div>
+    <div class="admin_counter_box">
+        <i class='bx bx-user-plus'></i>
+        <div class="counter" data-target="500"></div>
+        <span>Total Admins</span>
+    </div>
+    <div class="admin_counter_box">
+        <i class='bx bx-bar-chart'></i>
+        <div class="counter" data-target="800"></div>
+        <span>Total Products</span>
+    </div>
+</div>
+
+<style>
+    .hero_admin {
+        padding: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .admin_counter_box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin: 30px 50px;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background: #5b65f5;
+        color: #ffffff;
+    }
+
+    .admin_counter_box i {
+        font-size: 55px;
+    }
+
+    .counter {
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 580px) {
+        .hero_admin {
+            flex-direction: column;
+            padding-top: 400px;
+            padding-bottom: 300px;
+        }
+    }
+</style>

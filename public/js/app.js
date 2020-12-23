@@ -93,7 +93,27 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var counters = document.querySelectorAll(".counter");
+counters.forEach(function (counter) {
+  counter.innerText = "0";
 
+  var updateCounter = function updateCounter() {
+    var target = +counter.getAttribute("data-target");
+    var counter_number = +counter.innerText;
+    var increment_counter = target / 250;
+
+    if (counter_number < target) {
+      counter.innerText = "".concat(Math.ceil(counter_number + increment_counter));
+      setTimeout(updateCounter, 1);
+    } else {
+      counter.innerText = target;
+    }
+
+    ;
+  };
+
+  updateCounter();
+});
 
 /***/ }),
 
