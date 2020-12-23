@@ -50,7 +50,8 @@ router.get("/logout", (req, res) => {
 });
 // ============= Rendering Create admin Page ==========
 router.get("/createAdmin", verifyLogin, (req, res) => {
-  res.render("admin/auth/createAdmin", { admin: true });
+  let admin = req.session.admin;
+  res.render("admin/auth/createAdmin", { admin_page: true, admin });
 });
 // ============== Creating Admin Page on the server ==================
 router.post("/createAdmin", (req, res) => {
@@ -61,18 +62,21 @@ router.post("/createAdmin", (req, res) => {
   });
 });
 // ============= Rendering Products Page =====================
-router.get("/products", (req, res) => {
+router.get("/products", verifyLogin, (req, res) => {
   productController.getAllProducts().then((Products) => {
-    res.render("admin/products/products", { admin: true, Products });
+    let admin = req.session.admin;
+    res.render("admin/products/products", { admin_page: true, Products, admin });
   });
 });
 // ============ Rendering add products page ========================
-router.get("/add-product", (req, res) => {
-  res.render("admin/products/add-product", { admin: true });
+router.get("/add-product", verifyLogin, (req, res) => {
+  let admin = req.session.admin;
+  res.render("admin/products/add-product", { admin_page: true, admin });
 });
 router.post("/add-product", (req, res) => {
   productController.addProduct(req.body).then((id) => {
     let Image = req.files.Image;
+    // ======= Recieving image and stored in product_images folder ==
     Image.mv("./public/product_images/" + id + ".png", (err) => {
       if (!err) {
         res.render("admin/products/add-product", { admin: true });
@@ -80,6 +84,13 @@ router.post("/add-product", (req, res) => {
         console.log(err);
       }
     });
+  });
+});
+// =============== deleting Product ===========
+router.get('/delete_product/:id', (req, res) => {
+  let product_id = req.params.id;
+  productController.deleteProduct(product_id).then((response) => {
+    res.redirect('/admin/products');
   });
 });
 
