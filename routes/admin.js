@@ -62,7 +62,9 @@ router.post("/createAdmin", (req, res) => {
 });
 // ============= Rendering Products Page =====================
 router.get("/products", (req, res) => {
-  res.render("admin/products/products", { admin: true });
+  productController.getAllProducts().then((Products) => {
+    res.render("admin/products/products", { admin: true, Products });
+  });
 });
 // ============ Rendering add products page ========================
 router.get("/add-product", (req, res) => {
