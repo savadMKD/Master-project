@@ -9,27 +9,28 @@
         <div class="product_table_cell">
             <p>Price of the Product</p>
         </div>
+        <div class="product_table_cell">
+            <p>Operations</p>
+        </div>
     </div>
+    {{#each Products}}
     <div class="product_table_row last_cell">
         <div class="product_table_cell first_table_cell">
-            <p><img style="width: 100px;" src="/images/hero.png" alt=""></p>
+            <p><img style="width: 100px;" src="/product_images/{{this._id}}.png" alt={{this.Name}}></p>
         </div>
         <div class="product_table_cell">
-            <p>Mixer Grinder</p>
+            <p>{{this.Name}}</p>
         </div>
         <div class="product_table_cell">
-            <p>1250</p>
+            <p>{{this.Price}}</p>
+        </div>
+        <div class="product_table_cell">
+            <p>
+                <a href="#"><i style="font-size: 20px;" class="bx bxs-edit"></i></a>
+                &nbsp;
+                <a href="#"><i style="font-size: 20px;" class="bx bxs-trash"></i></a>
+            </p>
         </div>
     </div>
-    <div class="product_table_row last_cell">
-        <div class="product_table_cell first_table_cell">
-            <p><img style="width: 100px;" src="/images/hero.png" alt=""></p>
-        </div>
-        <div class="product_table_cell">
-            <p>Mixer Grinder</p>
-        </div>
-        <div class="product_table_cell">
-            <p>1250</p>
-        </div>
-    </div>
+    {{/each}}
 </div>
