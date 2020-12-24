@@ -1,0 +1,26 @@
+<div class="product_table">
+    <div class="product_table_row table_head">
+        <div class="product_table_cell first_table_cell">
+            <p>Name of the Admin</p>
+        </div>
+        <div class="product_table_cell">
+            <p>Email of the Admin</p>
+        </div>
+        <div class="product_table_cell">
+            <p>Delete</p>
+        </div>
+    </div>
+    {{#each Admins}}
+    <div class="product_table_row last_cell">
+        <div class="product_table_cell first_table_cell">
+            <p>{{this.Username}}</p>
+        </div>
+        <div class="product_table_cell">
+            <p>{{this.Email}}</p>
+        </div>
+        <div class="product_table_cell">
+            <p><a style="color: red; text-decoration: none;" href="/admin/delete_admin/{{this._id}}">Delete</a></p>
+        </div>
+    </div>
+    {{/each}}
+</div>

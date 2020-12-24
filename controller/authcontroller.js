@@ -1,6 +1,7 @@
 var db = require("../config/connection");
 var collection = require("../config/collections");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const { ObjectId } = require("mongodb");
 
 module.exports = {
     // ================ User Signup ======================
@@ -79,6 +80,21 @@ module.exports = {
         return new Promise( async (resolve, reject) => {
             let Users = await db.get().collection(collection.USER_COLLECTION).find().toArray();
             resolve(Users);
+        });
+    },
+    // ============== Getting All Admins =================
+    getAllAdmins: () => {
+        return new Promise( async (resolve, reject) => {
+            let Admins = await db.get().collection(collection.ADMIN_COLLECTION).find().toArray();
+            resolve(Admins);
+        });
+    },
+    // =================== Deleting Admins ================
+    deleteAdmin: (admin_id) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.ADMIN_COLLECTION).removeOne({ _id: ObjectId(admin_id) }).then((response) => {
+                resolve(response);
+            });
         });
     }
 };

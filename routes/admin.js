@@ -17,6 +17,7 @@ router.get("/", verifyLogin, function(req, res, next) {
   let admin = req.session.admin;
   res.render("admin/index", { admin_page: true, admin });
 });
+
 // Rendering Admin_Login Page
 router.get("/login", (req, res) => {
   if (req.session.adminLoggedIn) {
@@ -29,6 +30,7 @@ router.get("/login", (req, res) => {
     req.session.adminloginErr = false;
   }
 });
+
 // Login data connecting to the server
 router.post("/login", (req, res) => {
   authcontroller.adminLogin(req.body).then((response) => {
@@ -42,17 +44,20 @@ router.post("/login", (req, res) => {
     }
   });
 });
+
 // ==================== Logout Functianality ==============
 router.get("/logout", (req, res) => {
   req.session.admin = null;
   req.session.adminLoggedIn = false;
   res.redirect("/admin/login");
 });
+
 // ============= Rendering Create admin Page ==========
 router.get("/createAdmin", verifyLogin, (req, res) => {
   let admin = req.session.admin;
   res.render("admin/auth/createAdmin", { admin_page: true, admin });
 });
+
 // ============== Creating Admin Page on the server ==================
 router.post("/createAdmin", (req, res) => {
   authcontroller.admin_sigup(req.body).then((response) => {
@@ -61,6 +66,7 @@ router.post("/createAdmin", (req, res) => {
     res.redirect("/admin");
   });
 });
+
 // ============= Rendering Products Page =====================
 router.get("/products", verifyLogin, (req, res) => {
   productController.getAllProducts().then((Products) => {
@@ -68,11 +74,13 @@ router.get("/products", verifyLogin, (req, res) => {
     res.render("admin/products/products", { admin_page: true, Products, admin });
   });
 });
+
 // ============ Rendering add products page ========================
 router.get("/add-product", verifyLogin, (req, res) => {
   let admin = req.session.admin;
   res.render("admin/products/add-product", { admin_page: true, admin });
 });
+
 router.post("/add-product", (req, res) => {
   productController.addProduct(req.body).then((id) => {
     let Image = req.files.Image;
@@ -86,6 +94,7 @@ router.post("/add-product", (req, res) => {
     });
   });
 });
+
 // =============== deleting Product ===========
 router.get('/delete_product/:id', (req, res) => {
   let product_id = req.params.id;
@@ -93,11 +102,13 @@ router.get('/delete_product/:id', (req, res) => {
     res.redirect('/admin/products');
   });
 });
+
 // ======= Rendering Edit Product Page and sending Values ========
 router.get('/edit_product/:id', verifyLogin, async (req, res) => {
   let Product = await productController.getProductDetails(req.params.id);
   res.render('admin/products/edit-product', { admin_page: true, Product });
 });
+
 // ============ Updating Product Values and sending to the server ===============
 router.post('/edit_product/:id', (req, res) => {
   let product_id = req.params.id;
@@ -109,6 +120,7 @@ router.post('/edit_product/:id', (req, res) => {
     };
   });
 });
+
 // ============ View all the Users =================
 router.get('/all_users', verifyLogin, (req, res) => {
   authcontroller.getAllUsers().then((Users) => {
@@ -116,4 +128,27 @@ router.get('/all_users', verifyLogin, (req, res) => {
   });
 });
 
+// =============== View All The Admins =================
+router.get('/all_admins', verifyLogin, (req, res) => {
+  authcontroller.getAllAdmins().then((Admins) => {
+    res.render('admin/member/Admins', { admin_page: true, Admins });
+  });
+});
+
+// =================== deleting admins ================
+router.get('/delete_admin/:id', verifyLogin, (req, res) => {
+  let admin_id = req.params.id;
+  authcontroller.deleteAdmin(admin_id).then((response) => {
+    res.redirect('/admin/all_admins')
+  });
+});
+
+
+// =============== deleting Product ===========
+router.get('/delete_product/:id', (req, res) => {
+  let product_id = req.params.id;
+  productController.deleteProduct(product_id).then((response) => {
+    res.redirect('/admin/products');
+  });
+});
 module.exports = router;
