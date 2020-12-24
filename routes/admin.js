@@ -109,5 +109,11 @@ router.post('/edit_product/:id', (req, res) => {
     };
   });
 });
+// ============ View all the Users =================
+router.get('/all_users', verifyLogin, (req, res) => {
+  authcontroller.getAllUsers().then((Users) => {
+    res.render('admin/member/Users', { admin_page: true, Users });
+  });
+});
 
 module.exports = router;
