@@ -73,5 +73,12 @@ module.exports = {
                 resolve(data.ops[0])
             });
         });
+    },
+    // ============= Getting All Users =============
+    getAllUsers: () => {
+        return new Promise( async (resolve, reject) => {
+            let Users = await db.get().collection(collection.USER_COLLECTION).find().toArray();
+            resolve(Users);
+        });
     }
 };
