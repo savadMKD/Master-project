@@ -87,7 +87,7 @@ router.post("/add-product", (req, res) => {
     // ======= Recieving image and stored in product_images folder ==
     Image.mv("./public/product_images/" + id + ".png", (err) => {
       if (!err) {
-        res.render("admin/products/add-product", { admin: true });
+        res.redirect('/admin/add-product');
       } else {
         console.log(err);
       }
