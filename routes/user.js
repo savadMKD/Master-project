@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   res.render('user/index', { user });
 });
 // Render products page
-router.get('/products', (req, res) => {
+router.get('/products', verifyLogin, (req, res) => {
   productController.getAllProducts().then((Products) => {
     let user = req.session.user;
     res.render('user/products/products', { user, Products });
