@@ -10,13 +10,30 @@
             <p>{{this.Name}}</p>
         </div>
         <div class="product_card_info">
-            <a href="#" class="product_card_icon"><i class='bx bx-heart'></i></a>
+            <button style="padding: 10px; font-size: 15px; cursor: pointer;"><i class='bx bx-heart'></i></button>
             <div>
                 <span class="product_card_price"><i class='bx bx-rupee'></i>{{this.Price}}</span>
             </div>
-            <a href="#" class="product_card_icon"><i class='bx bx-cart-alt'></i></a>
+            <button onclick="addToCart('{{this._id}}')" style="padding: 10px; font-size: 15px; cursor: pointer;"><i
+                    class='bx bx-cart-alt'></i></button>
         </div>
     </article>
     {{/each}}
     {{!-- ---------------------------- --}}
 </main>
+
+
+<script>
+    // * ======================= Add To Cart ====================
+    function addToCart(product_id) {
+        $.ajax({
+            url: '/add_to_cart/' + product_id,
+            method: "get",
+            success: (response) => {
+                if(response){
+                    
+                }
+            }
+        });
+    };
+</script>
