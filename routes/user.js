@@ -1,5 +1,6 @@
 var express = require('express');
 const authController = require('../controller/authcontroller');
+const cartcontroller = require('../controller/cartcontroller');
 const productController = require('../controller/productController');
 var router = express.Router();
 
@@ -62,6 +63,12 @@ router.get('/logout', (req, res) => {
   req.session.user = null;
   req.session.userLoggedIn = false;
   res.redirect("/");
+});
+// ===================== Add To Cart =======================
+router.get('/add_to_cart/:id', (req, res) => {
+  cartcontroller.AddToCart(req.params.id, req.session.user._id).then(() => {
+    res.json({ status: true });
+  });
 });
 
 module.exports = router;
